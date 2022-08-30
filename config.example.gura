@@ -1,0 +1,11 @@
+api_key: "<api key here>"
+streaming_networks: [
+    453, # Hulu
+    1708, # CBS All Access
+    2739, # Disney+
+    4330, # Paramount+
+    213, # Netflix
+    1024, # Amazon Prime
+]
+tv_ids: [
+]
