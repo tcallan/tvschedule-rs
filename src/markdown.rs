@@ -54,11 +54,11 @@ pub(crate) fn to_markdown_all_table(all: &Vec<SeriesSummary>) -> String {
             series
                 .last_air
                 .map(|d| d.to_string())
-                .unwrap_or_else(|| "???".to_string()),
+                .unwrap_or_else(|| "?".to_string()),
             series
                 .next_air
                 .map(|d| d.to_string())
-                .unwrap_or_else(|| "???".to_string()),
+                .unwrap_or_else(|| "?".to_string()),
         )
     }
     output
