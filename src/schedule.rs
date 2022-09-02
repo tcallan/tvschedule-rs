@@ -69,4 +69,10 @@ mod tests {
         let (start, end) = get_week(date);
         start <= end
     }
+
+    #[quickcheck]
+    fn get_week_is_proper_length(date: Date) -> bool {
+        let (start, end) = get_week(date);
+        start == Date::MIN || end == Date::MAX || end - start == Duration::days(6)
+    }
 }

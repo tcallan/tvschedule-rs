@@ -19,7 +19,7 @@ pub(crate) fn to_markdown_github(summary: &Summary) -> String {
     output
 }
 
-pub(crate) fn to_markdown_this_week(this_week: &BTreeMap<Date, Vec<WeeklyEpisode>>) -> String {
+fn to_markdown_this_week(this_week: &BTreeMap<Date, Vec<WeeklyEpisode>>) -> String {
     let mut output = String::from("# This Week\n\n");
     for (date, eps) in this_week {
         output.push_str(&to_markdown_day(date, eps));
@@ -28,7 +28,7 @@ pub(crate) fn to_markdown_this_week(this_week: &BTreeMap<Date, Vec<WeeklyEpisode
     output
 }
 
-pub(crate) fn to_markdown_day(date: &Date, eps: &Vec<WeeklyEpisode>) -> String {
+fn to_markdown_day(date: &Date, eps: &Vec<WeeklyEpisode>) -> String {
     let mut output = format!("## {} ({})\n", date.weekday(), date);
     for ep in eps {
         write_safe!(
@@ -42,7 +42,7 @@ pub(crate) fn to_markdown_day(date: &Date, eps: &Vec<WeeklyEpisode>) -> String {
     output
 }
 
-pub(crate) fn to_markdown_all_table(all: &Vec<SeriesSummary>) -> String {
+fn to_markdown_all_table(all: &Vec<SeriesSummary>) -> String {
     let mut output = String::from("# Currently Watching\n\n");
     output.push_str("| Series | Last | Next |\n");
     output.push_str("| --- | --- | --- |\n");
