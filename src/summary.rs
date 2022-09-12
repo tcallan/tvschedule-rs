@@ -56,6 +56,7 @@ fn to_this_week(
     tv.iter()
         .flat_map(|tv| to_weekly_episodes(tv, streaming_networks))
         .filter(|e| start <= e.air_date && e.air_date <= end)
+        .sorted_by(|a, b| Ord::cmp(&(a.air_date, &a.series_name), &(b.air_date, &b.series_name)))
         .group_by(|e| e.air_date)
         .into_iter()
         .map(|(date, group)| (date, group.collect()))
@@ -271,6 +272,39 @@ mod tests {
                     air_date: date,
                     season: 2,
                     episode: 1,
+                },
+            ]
+        )
+    }
+
+    #[test]
+    fn summary_this_week_collects_disordered_dates() {
+        let date = Date::from_calendar_date(2022, Month::May, 1).unwrap();
+        let other = Date::from_calendar_date(2022, Month::May, 2).unwrap();
+
+        let tvs = vec![
+            mk_tv("A", None, Some(mk_ep(date, 3, 7))),
+            mk_tv("B", None, Some(mk_ep(other, 2, 1))),
+            mk_tv("C", None, Some(mk_ep(date, 2, 6))),
+        ];
+
+        let summary = Summary::new(date, tvs, &vec![123]);
+
+        let (_date, eps) = summary.this_week.iter().next().unwrap();
+        assert_eq!(
+            eps,
+            &vec![
+                WeeklyEpisode {
+                    series_name: "A".to_string(),
+                    air_date: date,
+                    season: 3,
+                    episode: 7,
+                },
+                WeeklyEpisode {
+                    series_name: "C".to_string(),
+                    air_date: date,
+                    season: 2,
+                    episode: 6,
                 },
             ]
         )
