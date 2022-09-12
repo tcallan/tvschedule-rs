@@ -23,8 +23,8 @@ fn to_markdown_this_week(this_week: &BTreeMap<Date, Vec<WeeklyEpisode>>) -> Stri
     let mut output = String::from("# This Week\n\n");
     for (date, eps) in this_week {
         output.push_str(&to_markdown_day(date, eps));
+        output.push('\n');
     }
-    output.push('\n');
     output
 }
 
