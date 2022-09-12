@@ -1,4 +1,3 @@
-use itertools::Itertools;
 use time::{Date, Duration};
 
 use std::collections::BTreeMap;
@@ -53,14 +52,16 @@ fn to_this_week(
     streaming_networks: &[u32],
 ) -> BTreeMap<Date, Vec<WeeklyEpisode>> {
     let (start, end) = schedule::get_week(date);
-    tv.iter()
+    let eps = tv
+        .iter()
         .flat_map(|tv| to_weekly_episodes(tv, streaming_networks))
-        .filter(|e| start <= e.air_date && e.air_date <= end)
-        .sorted_by(|a, b| Ord::cmp(&(a.air_date, &a.series_name), &(b.air_date, &b.series_name)))
-        .group_by(|e| e.air_date)
-        .into_iter()
-        .map(|(date, group)| (date, group.collect()))
-        .collect()
+        .filter(|e| start <= e.air_date && e.air_date <= end);
+
+    let mut map = BTreeMap::new();
+    for ep in eps {
+        map.entry(ep.air_date).or_insert_with(Vec::new).push(ep);
+    }
+    map
 }
 
 fn to_weekly_episodes(tv: &TV, streaming_networks: &[u32]) -> Vec<WeeklyEpisode> {
@@ -94,6 +95,7 @@ fn to_weekly_episode(tv: &TV, ep: &Episode, streaming_networks: &[u32]) -> Weekl
 
 #[cfg(test)]
 mod tests {
+    use itertools::Itertools;
     use time::Month;
 
     use crate::the_movie_db::Network;
