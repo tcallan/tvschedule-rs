@@ -14,7 +14,7 @@ reqwest = { version = "0.11.13", features = ["json"] }
 serde = { version = "1.0.148", features = ["derive"] }
 serde_gura = "0.1.5"
 time = { version = "0.3.17", features = ["serde-human-readable", "macros", "quickcheck"] }
-tokio = { version = "1.22.0", features = ["macros", "rt-multi-thread"] }
+tokio = { version = "1.23.0", features = ["macros", "rt-multi-thread"] }
 
 [dev-dependencies]
 itertools = "0.10.5"
