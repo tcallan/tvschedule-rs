@@ -17,4 +17,4 @@ time = { version = "0.3.22", features = ["serde-human-readable", "macros", "quic
 tokio = { version = "1.29.1", features = ["macros", "rt-multi-thread"] }
 
 [dev-dependencies]
-itertools = "0.10.5"
+itertools = "0.11.0"
