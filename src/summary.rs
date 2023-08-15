@@ -131,7 +131,7 @@ mod tests {
     fn to_weekly_episodes_no_last_or_next() {
         let tv = mk_tv("X", None, None);
 
-        let result = to_weekly_episodes(&tv, &vec![123]);
+        let result = to_weekly_episodes(&tv, &[123]);
 
         assert!(result.is_empty());
     }
@@ -142,7 +142,7 @@ mod tests {
         let next = mk_ep(date, 1, 2);
         let tv = mk_tv("X", None, Some(next));
 
-        let result = to_weekly_episodes(&tv, &vec![123]);
+        let result = to_weekly_episodes(&tv, &[123]);
 
         assert_eq!(
             result,
@@ -161,7 +161,7 @@ mod tests {
         let last = mk_ep(date, 1, 1);
         let tv = mk_tv("X", Some(last), None);
 
-        let result = to_weekly_episodes(&tv, &vec![123]);
+        let result = to_weekly_episodes(&tv, &[123]);
 
         assert_eq!(
             result,
@@ -181,7 +181,7 @@ mod tests {
         let next = mk_ep(date, 1, 2);
         let tv = mk_tv("X", Some(last), Some(next));
 
-        let result = to_weekly_episodes(&tv, &vec![123]);
+        let result = to_weekly_episodes(&tv, &[123]);
 
         assert_eq!(
             result,
@@ -208,7 +208,7 @@ mod tests {
         let ep = mk_ep(date, 1, 2);
         let tv = mk_tv("X", None, None);
 
-        let result = to_weekly_episode(&tv, &ep, &vec![123]);
+        let result = to_weekly_episode(&tv, &ep, &[123]);
 
         assert_eq!(date, result.air_date);
     }
@@ -219,7 +219,7 @@ mod tests {
         let ep = mk_ep(date, 1, 2);
         let tv = mk_tv("X", None, None);
 
-        let result = to_weekly_episode(&tv, &ep, &vec![456]);
+        let result = to_weekly_episode(&tv, &ep, &[456]);
 
         assert_ne!(date, result.air_date);
         assert_eq!(result.air_date - date, Duration::days(1));
@@ -230,7 +230,7 @@ mod tests {
         let date = Date::from_calendar_date(2022, Month::May, 1).unwrap();
         let tvs = vec![mk_tv("B", None, None), mk_tv("A", None, None)];
 
-        let summary = Summary::new(date, tvs, &vec![123]);
+        let summary = Summary::new(date, tvs, &[123]);
 
         assert_eq!(
             summary.all,
@@ -257,7 +257,7 @@ mod tests {
             mk_tv("A", None, Some(mk_ep(date, 3, 7))),
         ];
 
-        let summary = Summary::new(date, tvs, &vec![123]);
+        let summary = Summary::new(date, tvs, &[123]);
 
         let (_date, eps) = summary.this_week.iter().exactly_one().unwrap();
         assert_eq!(
@@ -290,7 +290,7 @@ mod tests {
             mk_tv("C", None, Some(mk_ep(date, 2, 6))),
         ];
 
-        let summary = Summary::new(date, tvs, &vec![123]);
+        let summary = Summary::new(date, tvs, &[123]);
 
         let (_date, eps) = summary.this_week.iter().next().unwrap();
         assert_eq!(
