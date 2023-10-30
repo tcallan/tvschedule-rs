@@ -11,7 +11,7 @@ futures-util = "0.3.28"
 quickcheck = "1.0.3"
 quickcheck_macros = "1.0.0"
 reqwest = { version = "0.11.22", features = ["json"] }
-serde = { version = "1.0.189", features = ["derive"] }
+serde = { version = "1.0.190", features = ["derive"] }
 serde_gura = "0.1.7"
 time = { version = "0.3.30", features = ["serde-human-readable", "macros", "quickcheck"] }
 tokio = { version = "1.33.0", features = ["macros", "rt-multi-thread"] }
