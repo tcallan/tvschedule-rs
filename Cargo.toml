@@ -6,11 +6,11 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-futures = "0.3.30"
+futures = "0.3.31"
 futures-util = "0.3.29"
 quickcheck = "1.0.3"
 quickcheck_macros = "1.0.0"
-reqwest = { version = "0.12.7", features = ["json"] }
+reqwest = { version = "0.12.8", features = ["json"] }
 serde = { version = "1.0.210", features = ["derive"] }
 serde_gura = "0.1.8"
 time = { version = "0.3.36", features = ["serde-human-readable", "macros", "quickcheck"] }
