@@ -65,7 +65,7 @@ fn to_this_week(
 }
 
 fn to_weekly_episodes(tv: &TV, streaming_networks: &[u32]) -> Vec<WeeklyEpisode> {
-    vec![
+    [
         tv.last_episode_to_air.as_ref(),
         tv.next_episode_to_air.as_ref(),
     ]
