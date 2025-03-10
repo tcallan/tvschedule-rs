@@ -11,10 +11,10 @@ futures-util = "0.3.29"
 quickcheck = "1.0.3"
 quickcheck_macros = "1.0.0"
 reqwest = { version = "0.12.12", features = ["json"] }
-serde = { version = "1.0.218", features = ["derive"] }
+serde = { version = "1.0.219", features = ["derive"] }
 serde_gura = "0.1.8"
-time = { version = "0.3.37", features = ["serde-human-readable", "macros", "quickcheck"] }
-tokio = { version = "1.43.0", features = ["macros", "rt-multi-thread"] }
+time = { version = "0.3.39", features = ["serde-human-readable", "macros", "quickcheck"] }
+tokio = { version = "1.44.0", features = ["macros", "rt-multi-thread"] }
 
 [dev-dependencies]
 itertools = "0.14.0"
