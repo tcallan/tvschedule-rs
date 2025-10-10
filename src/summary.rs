@@ -18,7 +18,7 @@ impl Summary {
         tv.sort_by(|e1, e2| e1.name.cmp(&e2.name));
         Summary {
             this_week: to_this_week(date, &tv, streaming_networks),
-            all: tv.iter().map(to_serires_summary).collect(),
+            all: tv.iter().map(to_series_summary).collect(),
         }
     }
 }
@@ -38,7 +38,7 @@ pub(crate) struct SeriesSummary {
     pub(crate) next_air: Option<Date>,
 }
 
-fn to_serires_summary(tv: &TV) -> SeriesSummary {
+fn to_series_summary(tv: &TV) -> SeriesSummary {
     SeriesSummary {
         name: tv.name.to_owned(),
         last_air: tv.last_episode_to_air.as_ref().map(|e| e.air_date),
