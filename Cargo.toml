@@ -10,7 +10,7 @@ futures = "0.3.31"
 futures-util = "0.3.29"
 quickcheck = "1.0.3"
 quickcheck_macros = "1.1.0"
-reqwest = { version = "0.12.26", features = ["json"] }
+reqwest = { version = "0.12.28", features = ["json"] }
 serde = { version = "1.0.228", features = ["derive"] }
 serde_gura = "0.1.8"
 time = { version = "0.3.44", features = ["serde-human-readable", "macros", "quickcheck"] }
