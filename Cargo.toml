@@ -13,7 +13,7 @@ quickcheck_macros = "1.1.0"
 reqwest = { version = "0.13.1", features = ["json"] }
 serde = { version = "1.0.228", features = ["derive"] }
 serde_gura = "0.1.8"
-time = { version = "0.3.46", features = ["serde-human-readable", "macros", "quickcheck"] }
+time = { version = "0.3.47", features = ["serde-human-readable", "macros", "quickcheck"] }
 tokio = { version = "1.49.0", features = ["macros", "rt-multi-thread"] }
 
 [dev-dependencies]
